@@ -67,6 +67,31 @@
     h2 {
       color: #2563eb;
     }
+
+    input, button {
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      width: 100%;
+      border-radius: 0.5rem;
+      border: 1px solid #cbd5e1;
+    }
+
+    button {
+      background: #2563eb;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #1e40af;
+    }
+
+    .result {
+      margin-top: 1rem;
+      font-weight: bold;
+      color: #059669;
+    }
   </style>
 </head>
 <body>
@@ -76,6 +101,7 @@
       <a href="#problema">Problema</a>
       <a href="#metodos">Métodos</a>
       <a href="#interfaz">Interfaz</a>
+      <a href="#calculo">Cálculo</a>
       <a href="#repo">Repositorio</a>
     </nav>
   </header>
@@ -102,6 +128,25 @@
       <p>Este componente mostrará los campos de entrada para datos, los resultados y visualizaciones. Será desarrollada usando tecnologías como HTML, CSS, JS, y conectada a Matlab/Octave mediante API.</p>
     </div>
 
+    <div class="card" id="calculo">
+      <h2>Resolución de Ecuaciones No Lineales</h2>
+      <p>Usa el método de bisección para encontrar raíces de una función continua.</p>
+      <label for="funcion">Función f(x):</label>
+      <input type="text" id="funcion" placeholder="Ej: x*x - 2">
+
+      <label for="a">Límite inferior (a):</label>
+      <input type="number" id="a" step="any">
+
+      <label for="b">Límite superior (b):</label>
+      <input type="number" id="b" step="any">
+
+      <label for="tolerancia">Tolerancia:</label>
+      <input type="number" id="tolerancia" value="0.0001" step="any">
+
+      <button onclick="biseccion()">Calcular raíz</button>
+      <div class="result" id="resultado"></div>
+    </div>
+
     <div class="card" id="repo">
       <h2>Repositorio y Scrum</h2>
       <p>Documentación completa, backlog, plan de desarrollo y versión actual del código estarán disponibles aquí.</p>
@@ -111,5 +156,33 @@
   <footer>
     <p>© 2025 Proyecto Final - Universidad de la Costa | Ing. de Sistemas</p>
   </footer>
+
+  <script>
+    function biseccion() {
+      const fStr = document.getElementById("funcion").value;
+      const f = new Function("x", `return ${fStr}`);
+      let a = parseFloat(document.getElementById("a").value);
+      let b = parseFloat(document.getElementById("b").value);
+      const tol = parseFloat(document.getElementById("tolerancia").value);
+
+      if (f(a) * f(b) > 0) {
+        document.getElementById("resultado").innerText = "f(a) y f(b) deben tener signos opuestos.";
+        return;
+      }
+
+      let iter = 0;
+      let c;
+      while ((b - a) / 2 > tol) {
+        c = (a + b) / 2;
+        if (f(c) === 0) break;
+        if (f(a) * f(c) < 0) b = c;
+        else a = c;
+        iter++;
+        if (iter > 1000) break;
+      }
+
+      document.getElementById("resultado").innerText = `Raíz aproximada: ${c.toFixed(6)} en ${iter} iteraciones`;
+    }
+  </script>
 </body>
 </html>
