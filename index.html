@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>App de Cálculo Numérico</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.0/math.min.js"></script>
   <style>
     * {
       box-sizing: border-box;
@@ -93,19 +94,21 @@
     }
   </style>
   <script>
+    function parseFunction(expr) {
+      return math.compile(expr);
+    }
+
     function metodoSecante() {
       const TOL = 0.0001;
+      const expr = document.getElementById("funcionSecante").value;
+      let f = parseFunction(expr);
       let x0 = parseFloat(document.getElementById("x0").value);
       let x1 = parseFloat(document.getElementById("x1").value);
       let cont = 1;
 
-      function f(x) {
-        return Math.sin(x) + 3 * Math.cos(x);
-      }
-
       while (true) {
-        let f0 = f(x0);
-        let f1 = f(x1);
+        let f0 = f.evaluate({x: x0});
+        let f1 = f.evaluate({x: x1});
         let x2 = x1 - (x1 - x0) * (f1 / (f1 - f0));
 
         if (Math.abs(x2 - x1) <= TOL) {
@@ -117,6 +120,40 @@
         x1 = x2;
         cont++;
       }
+    }
+
+    function metodoBiseccion() {
+      const TOL = 0.0001;
+      const expr = document.getElementById("funcionBiseccion").value;
+      let f = parseFunction(expr);
+      let a = parseFloat(document.getElementById("a").value);
+      let b = parseFloat(document.getElementById("b").value);
+      let fa = f.evaluate({x: a});
+      let fb = f.evaluate({x: b});
+
+      if (fa * fb > 0) {
+        document.getElementById("resultadoBiseccion").innerText = "No se puede aplicar el método. f(a) y f(b) deben tener signos opuestos.";
+        return;
+      }
+
+      let iteraciones = 0;
+      let c;
+      while ((b - a) / 2 > TOL) {
+        c = (a + b) / 2;
+        let fc = f.evaluate({x: c});
+
+        if (fc === 0) break;
+        if (fa * fc < 0) {
+          b = c;
+          fb = fc;
+        } else {
+          a = c;
+          fa = fc;
+        }
+        iteraciones++;
+      }
+
+      document.getElementById("resultadoBiseccion").innerText = `Raíz aproximada: ${(a + b) / 2} en ${iteraciones} iteraciones.`;
     }
   </script>
 </head>
@@ -155,18 +192,29 @@
     </div>
 
     <div class="card" id="calculo">
-      <h2>Método Secante</h2>
-      <p>Resuelve la ecuación f(x) = sin(x) + 3cos(x) usando el método de la secante.</p>
+      <h2>Método de la Secante</h2>
       <form onsubmit="event.preventDefault(); metodoSecante();">
+        <label for="funcionSecante">Función f(x):</label>
+        <input type="text" id="funcionSecante" placeholder="Ej: sin(x) + 3*cos(x)" required>
         <label for="x0">Valor inicial x₀:</label>
-        <input type="number" id="x0" step="any" value="4">
-
+        <input type="number" id="x0" step="any" required>
         <label for="x1">Valor inicial x₁:</label>
-        <input type="number" id="x1" step="any" value="7">
-
-        <button type="submit">Calcular raíz</button>
+        <input type="number" id="x1" step="any" required>
+        <button type="submit">Calcular raíz (Secante)</button>
       </form>
       <p id="resultadoSecante"></p>
+
+      <h2>Método de Bisección</h2>
+      <form onsubmit="event.preventDefault(); metodoBiseccion();">
+        <label for="funcionBiseccion">Función f(x):</label>
+        <input type="text" id="funcionBiseccion" placeholder="Ej: sin(x) + 3*cos(x)" required>
+        <label for="a">Extremo inferior a:</label>
+        <input type="number" id="a" step="any" required>
+        <label for="b">Extremo superior b:</label>
+        <input type="number" id="b" step="any" required>
+        <button type="submit">Calcular raíz (Bisección)</button>
+      </form>
+      <p id="resultadoBiseccion"></p>
     </div>
 
     <div class="card" id="repo">
