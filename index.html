@@ -68,31 +68,57 @@
       color: #2563eb;
     }
 
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
     input, button {
       padding: 0.5rem;
-      margin: 0.5rem 0;
-      width: 100%;
       border-radius: 0.5rem;
-      border: 1px solid #cbd5e1;
+      border: 1px solid #ccc;
+      font-size: 1rem;
     }
 
     button {
-      background: #2563eb;
+      background-color: #2563eb;
       color: white;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: background 0.2s;
     }
 
     button:hover {
-      background: #1e40af;
-    }
-
-    .result {
-      margin-top: 1rem;
-      font-weight: bold;
-      color: #059669;
+      background-color: #1e40af;
     }
   </style>
+  <script>
+    function metodoSecante() {
+      const TOL = 0.0001;
+      let x0 = parseFloat(document.getElementById("x0").value);
+      let x1 = parseFloat(document.getElementById("x1").value);
+      let cont = 1;
+
+      function f(x) {
+        return Math.sin(x) + 3 * Math.cos(x);
+      }
+
+      while (true) {
+        let f0 = f(x0);
+        let f1 = f(x1);
+        let x2 = x1 - (x1 - x0) * (f1 / (f1 - f0));
+
+        if (Math.abs(x2 - x1) <= TOL) {
+          document.getElementById("resultadoSecante").innerText = `Raíz aproximada: ${x2.toFixed(6)} en ${cont} iteraciones.`;
+          break;
+        }
+
+        x0 = x1;
+        x1 = x2;
+        cont++;
+      }
+    }
+  </script>
 </head>
 <body>
   <header>
@@ -125,26 +151,22 @@
 
     <div class="card" id="interfaz">
       <h2>Interfaz de Usuario</h2>
-      <p>Este componente mostrará los campos de entrada para datos, los resultados y visualizaciones. </p>
+      <p>Este componente mostrará los campos de entrada para datos, los resultados y visualizaciones. Será desarrollada usando tecnologías como HTML, CSS, JS, y conectada a Matlab/Octave mediante API.</p>
     </div>
 
     <div class="card" id="calculo">
-      <h2>Resolución de Ecuaciones No Lineales</h2>
-      <p>Usa el método de bisección para encontrar raíces de una función continua.</p>
-      <label for="funcion">Función f(x):</label>
-      <input type="text" id="funcion" placeholder="Ej: x*x - 2">
+      <h2>Método Secante</h2>
+      <p>Resuelve la ecuación f(x) = sin(x) + 3cos(x) usando el método de la secante.</p>
+      <form onsubmit="event.preventDefault(); metodoSecante();">
+        <label for="x0">Valor inicial x₀:</label>
+        <input type="number" id="x0" step="any" value="4">
 
-      <label for="a">Límite inferior (a):</label>
-      <input type="number" id="a" step="any">
+        <label for="x1">Valor inicial x₁:</label>
+        <input type="number" id="x1" step="any" value="7">
 
-      <label for="b">Límite superior (b):</label>
-      <input type="number" id="b" step="any">
-
-      <label for="tolerancia">Tolerancia:</label>
-      <input type="number" id="tolerancia" value="0.0001" step="any">
-
-      <button onclick="biseccion()">Calcular raíz</button>
-      <div class="result" id="resultado"></div>
+        <button type="submit">Calcular raíz</button>
+      </form>
+      <p id="resultadoSecante"></p>
     </div>
 
     <div class="card" id="repo">
@@ -156,33 +178,5 @@
   <footer>
     <p>© 2025 Proyecto Final - Universidad de la Costa | Ing. de Sistemas</p>
   </footer>
-
-  <script>
-    function biseccion() {
-      const fStr = document.getElementById("funcion").value;
-      const f = new Function("x", `return ${fStr}`);
-      let a = parseFloat(document.getElementById("a").value);
-      let b = parseFloat(document.getElementById("b").value);
-      const tol = parseFloat(document.getElementById("tolerancia").value);
-
-      if (f(a) * f(b) > 0) {
-        document.getElementById("resultado").innerText = "f(a) y f(b) deben tener signos opuestos.";
-        return;
-      }
-
-      let iter = 0;
-      let c;
-      while ((b - a) / 2 > tol) {
-        c = (a + b) / 2;
-        if (f(c) === 0) break;
-        if (f(a) * f(c) < 0) b = c;
-        else a = c;
-        iter++;
-        if (iter > 1000) break;
-      }
-
-      document.getElementById("resultado").innerText = `Raíz aproximada: ${c.toFixed(6)} en ${iter} iteraciones`;
-    }
-  </script>
 </body>
 </html>
