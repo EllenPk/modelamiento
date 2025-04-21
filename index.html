@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mi Página Bonita</title>
+  <title>App de Cálculo Numérico</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -22,7 +22,7 @@
     }
 
     header {
-      background: #2563eb;
+      background: #1e3a8a;
       color: white;
       padding: 1rem 2rem;
       display: flex;
@@ -42,7 +42,7 @@
       padding: 2rem;
       display: grid;
       gap: 2rem;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     }
 
     .card {
@@ -63,35 +63,53 @@
       text-align: center;
       padding: 1rem;
     }
+
+    h2 {
+      color: #2563eb;
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Mi Proyecto</h1>
+    <h1>Aplicación Web - Cálculo Numérico</h1>
     <nav>
-      <a href="#">Inicio</a>
-      <a href="#">Servicios</a>
-      <a href="#">Contacto</a>
+      <a href="#problema">Problema</a>
+      <a href="#metodos">Métodos</a>
+      <a href="#interfaz">Interfaz</a>
+      <a href="#repo">Repositorio</a>
     </nav>
   </header>
 
   <main>
-    <div class="card">
-      <h2>Sección 1</h2>
-      <p>Contenido que puedes reemplazar con lo que necesites.</p>
+    <div class="card" id="problema">
+      <h2>Definición del Problema</h2>
+      <p>Este espacio está destinado para describir un problema real que pueda resolverse con métodos numéricos.</p>
     </div>
-    <div class="card">
-      <h2>Sección 2</h2>
-      <p>Otra parte que puedes usar para tu página.</p>
+
+    <div class="card" id="metodos">
+      <h2>Métodos Numéricos</h2>
+      <ul>
+        <li>Interpolación y ajuste de curvas</li>
+        <li>Solución de ecuaciones no lineales</li>
+        <li>Integración y derivación numérica</li>
+        <li>Resolución de ecuaciones diferenciales</li>
+        <li>Optimización numérica</li>
+      </ul>
     </div>
-    <div class="card">
-      <h2>Sección 3</h2>
-      <p>Agrega lo que desees aquí.</p>
+
+    <div class="card" id="interfaz">
+      <h2>Interfaz de Usuario</h2>
+      <p>Este componente mostrará los campos de entrada para datos, los resultados y visualizaciones. Será desarrollada usando tecnologías como HTML, CSS, JS, y conectada a Matlab/Octave mediante API.</p>
+    </div>
+
+    <div class="card" id="repo">
+      <h2>Repositorio y Scrum</h2>
+      <p>Documentación completa, backlog, plan de desarrollo y versión actual del código estarán disponibles aquí.</p>
     </div>
   </main>
 
   <footer>
-    <p>© 2025 Mi Página Bonita</p>
+    <p>© 2025 Proyecto Final - Universidad de la Costa | Ing. de Sistemas</p>
   </footer>
 </body>
 </html>
