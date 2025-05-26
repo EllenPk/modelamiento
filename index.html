@@ -1,203 +1,220 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Calculadora Numérica Avanzada</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.0/math.min.js"></script>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora Numérica Avanzada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.0/math.min.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <div class="header-content">
-      <h1><i class="fas fa-calculator"></i> Calculadora Numérica Avanzada</h1>
-      <nav>
-        <a href="#problema"><i class="fas fa-lightbulb"></i> Problema</a>
-        <a href="#metodos-info"><i class="fas fa-cogs"></i> Métodos</a>
-        <a href="#interfaz"><i class="fas fa-desktop"></i> Interfaz</a>
-        <a href="#calculo-section"><i class="fas fa-square-root-alt"></i> Cálculo</a>
-        <a href="#repo"><i class="fas fa-code-branch"></i> Repositorio</a>
-        <a href="#" onclick="openModal(); return false;"><i class="fas fa-info-circle"></i> Acerca de</a> </nav>
-    </div>
-  </header>
-
-  <main>
-    <div class="card" id="problema">
-      <h2><i class="fas fa-bullseye"></i> Definición del Problema</h2>
-      <p>La ingeniería y las ciencias a menudo se enfrentan a desafíos matemáticos complejos que no pueden resolverse mediante métodos analíticos directos. Estos incluyen la determinación de raíces de ecuaciones no lineales, la interpolación de datos experimentales, la solución de sistemas de ecuaciones y la optimización de procesos. La falta de herramientas accesibles y didácticas para explorar y aplicar estos métodos puede dificultar la comprensión y la resolución práctica de problemas.</p>
-      <p>Este proyecto aborda la necesidad de una plataforma interactiva que permita a estudiantes y profesionales <strong>explorar, aplicar y visualizar métodos numéricos fundamentales</strong>. Nos enfocamos en proporcionar una herramienta robusta y fácil de usar para encontrar soluciones aproximadas a problemas que son intratables analíticamente.</p>
-      <p class="justification"><strong>Justificación:</strong> La habilidad para aplicar y comprender métodos numéricos es indispensable en el currículo de ingeniería y ciencias. Esta aplicación sirve como un puente entre la teoría y la práctica, ofreciendo un entorno de aprendizaje activo. Al permitir la manipulación de funciones y parámetros, y la visualización de resultados, se mejora la intuición sobre la convergencia, la estabilidad y la precisión de los algoritmos. Esto no solo facilita el aprendizaje, sino que también equipa a los usuarios con una herramienta valiosa para el análisis y diseño en sus respectivas disciplinas.</p>
-    </div>
-
-    <div class="card" id="metodos-info">
-      <h2><i class="fas fa-list-ol"></i> Métodos Numéricos Soportados</h2>
-      <p>Esta aplicación implementa y demuestra una selección de métodos numéricos clave para la resolución de ecuaciones no lineales y la interpolación. Cada método ofrece una aproximación diferente para abordar problemas específicos:</p>
-      <ul>
-        <li><i class="fas fa-check-circle"></i> <strong>Interpolación de Lagrange:</strong> Permite construir un polinomio que pasa exactamente por un conjunto dado de puntos de datos. Es invaluable para estimar valores intermedios o para aproximar funciones complejas a partir de un número discreto de observaciones.</li>
-        <li><i class="fas fa-check-circle"></i> <strong>Método de Punto Fijo:</strong> Un método iterativo para encontrar raíces de ecuaciones. Se basa en transformar la ecuación original f(x)=0 en una forma equivalente x=g(x) y luego aplicar un proceso de iteración simple. Su convergencia depende de la elección de g(x).</li>
-        <li><i class="fas fa-check-circle"></i> <strong>Método de Newton-Raphson:</strong> Un método potente y de rápida convergencia para encontrar raíces de funciones. Requiere el conocimiento de la función y su primera derivada. Es ampliamente utilizado en optimización y resolución de sistemas no lineales.</li>
-        <li><i class="fas fa-check-circle"></i> <strong>Método de la Secante:</strong> Una alternativa al método de Newton-Raphson que no requiere el cálculo explícito de la derivada. Aproxima la derivada utilizando una línea secante que pasa por dos puntos previos de la función.</li>
-        <li><i class="fas fa-check-circle"></i> <strong>Método de Bisección:</strong> Un método robusto y garantizado para encontrar una raíz dentro de un intervalo cerrado, siempre que la función sea continua y cambie de signo en dicho intervalo. Aunque su convergencia es más lenta, su fiabilidad lo hace fundamental.</li>
-        <li><i class="fas fa-hourglass-half"></i> <strong>Otros métodos:</strong> (Próximas implementaciones) Nuestra visión a futuro incluye la adición de métodos para integración y derivación numérica, resolución de ecuaciones diferenciales ordinarias (EDO) y problemas de optimización numérica, ampliando aún más la utilidad de la calculadora.</li>
-      </ul>
-      <p class="impact-statement">Estos métodos son herramientas fundamentales en áreas como la simulación, el diseño de ingeniería, la economía, la física y la ciencia de datos, empoderando a los usuarios para resolver desafíos complejos y tomar decisiones informadas.</p>
-    </div>
-
-    <div class="card" id="interfaz">
-      <h2><i class="fas fa-desktop"></i> Diseño y Usabilidad de la Interfaz</h2>
-      <p>La interfaz de usuario ha sido cuidadosamente diseñada para ser <strong>intuitiva, limpia y altamente funcional</strong>, priorizando la experiencia del usuario. Nuestro objetivo es que la interacción con los métodos numéricos sea lo más sencilla y clara posible, incluso para usuarios sin experiencia previa en programación.</p>
-      <ul>
-        <li><strong>Navegación Clara:</strong> Un menú superior persistente permite un acceso rápido a las diferentes secciones de la aplicación.</li>
-        <li><strong>Selección de Métodos Intuitiva:</strong> La sección de "Cálculo" presenta un panel lateral de selección de métodos, permitiendo al usuario elegir fácilmente el algoritmo deseado. El método activo se resalta visualmente.</li>
-        <li><strong>Formularios Específicos:</strong> Cada método numérico tiene su propio formulario de entrada de datos, diseñado para solicitar solo los parámetros relevantes. Los campos son claros y las instrucciones de ejemplo guían al usuario.</li>
-        <li><strong>Retroalimentación Visual:</strong> Los resultados de los cálculos se muestran en un área dedicada con un formato claro. Se incluyen indicadores de carga y mensajes de error específicos para guiar al usuario en caso de problemas o no convergencia.</li>
-        <li><strong>Diseño Responsivo:</strong> La aplicación se adapta automáticamente a diferentes tamaños de pantalla (escritorio, tablet, móvil), garantizando una experiencia óptima en cualquier dispositivo.</li>
-        <li><strong>Estética Profesional:</strong> Se utiliza una paleta de colores moderna y tipografía legible para crear un entorno de trabajo agradable y profesional, inspirándose en herramientas científicas y calculadoras avanzadas.</li>
-      </ul>
-      <p>Este enfoque en la usabilidad asegura que la aplicación no solo sea una herramienta de cálculo, sino también una plataforma didáctica efectiva.</p>
-    </div>
-
-    <div class="card full-width-card" id="calculo-section">
-      <h2><i class="fas fa-calculator"></i> Realizar Cálculos Numéricos</h2>
-      <p class="intro-text">Selecciona un método numérico del panel izquierdo para ingresar los parámetros necesarios y obtener los resultados. Asegúrate de usar la sintaxis correcta para las funciones (ej: `sin(x)`, `x^2`, `exp(x)`).</p>
-
-      <div class="calculator-layout">
-        <div class="method-selection-panel">
-          <h3><i class="fas fa-hand-pointer"></i> Selecciona un Método</h3>
-          <button class="method-button" data-method="lagrange-content" onclick="showMethodContent('lagrange-content')">Interpolación de Lagrange</button>
-          <button class="method-button" data-method="punto-fijo-content" onclick="showMethodContent('punto-fijo-content')">Método de Punto Fijo</button>
-          <button class="method-button" data-method="newton-raphson-content" onclick="showMethodContent('newton-raphson-content')">Método de Newton-Raphson</button>
-          <button class="method-button" data-method="secante-content" onclick="showMethodContent('secante-content')">Método de la Secante</button>
-          <button class="method-button" data-method="biseccion-content" onclick="showMethodContent('biseccion-content')">Método de Bisección</button>
-          </div>
-
-        <div class="calculation-area">
-          <h3><i class="fas fa-keyboard"></i> Ingresa los Parámetros</h3>
-
-          <div id="lagrange-content" class="method-content">
-            <h4>Polinomio de Interpolación de Lagrange</h4>
-            <form onsubmit="event.preventDefault(); metodoPolilagrange();">
-              <label for="xValLagrange">Valor de x a interpolar:</label>
-              <input type="number" id="xValLagrange" step="any" required placeholder="Ej: 3.5">
-
-              <label for="X_pointsLagrange">Puntos X (separados por comas o espacios):</label>
-              <textarea id="X_pointsLagrange" class="array-input" rows="2" placeholder="Ej: 1, 2, 4, 5" required></textarea>
-
-              <label for="Y_pointsLagrange">Puntos Y (separados por comas o espacios):</label>
-              <textarea id="Y_pointsLagrange" class="array-input" rows="2" placeholder="Ej: 10, 15, 20, 25" required></textarea>
-
-              <button type="submit"><i class="fas fa-play-circle"></i> Calcular con Lagrange</button>
-            </form>
-            <p id="resultadoPolilagrange" class="result-display"></p>
-          </div>
-
-          <div id="punto-fijo-content" class="method-content">
-            <h4>Método de Punto Fijo</h4>
-            <p class="method-description">Para resolver f(x) = 0, se requiere una función g(x) tal que x = g(x) (es decir, f(x) = x - g(x)).</p>
-            <form onsubmit="event.preventDefault(); metodoPuntoFijo();">
-              <label for="funcionG">Función de iteración g(x):</label>
-              <input type="text" id="funcionG" placeholder="Ej: cos(x) + 0.5" required>
-              <label for="x0PuntoFijo">Valor inicial x₀:</label>
-              <input type="number" id="x0PuntoFijo" step="any" required>
-              <button type="submit"><i class="fas fa-play-circle"></i> Calcular punto fijo</button>
-            </form>
-            <p id="resultadoPuntoFijo" class="result-display"></p>
-          </div>
-
-          <div id="newton-raphson-content" class="method-content">
-            <h4>Método de Newton-Raphson</h4>
-            <form onsubmit="event.preventDefault(); metodoNewtonRaphson();">
-              <label for="funcionFNewton">Función f(x):</label>
-              <input type="text" id="funcionFNewton" placeholder="Ej: x^3 - 2*x + 8" required>
-              <label for="x0Newton">Valor inicial x₀:</label>
-              <input type="number" id="x0Newton" step="any" required>
-              <button type="submit"><i class="fas fa-play-circle"></i> Calcular raíz (Newton)</button>
-            </form>
-            <p id="resultadoNewtonRaphson" class="result-display"></p>
-          </div>
-
-          <div id="secante-content" class="method-content">
-            <h4>Método de la Secante</h4>
-            <form onsubmit="event.preventDefault(); metodoSecante();">
-              <label for="funcionSecante">Función f(x):</label>
-              <input type="text" id="funcionSecante" placeholder="Ej: sin(x) + 3*cos(x)" required>
-              <label for="x0">Valor inicial x₀:</label>
-              <input type="number" id="x0" step="any" required>
-              <label for="x1">Valor inicial x₁:</label>
-              <input type="number" id="x1" step="any" required>
-              <button type="submit"><i class="fas fa-play-circle"></i> Calcular raíz (Secante)</button>
-            </form>
-            <p id="resultadoSecante" class="result-display"></p>
-          </div>
-
-          <div id="biseccion-content" class="method-content">
-            <h4>Método de Bisección</h4>
-            <form onsubmit="event.preventDefault(); metodoBiseccion();">
-              <label for="funcionBiseccion">Función f(x):</label>
-              <input type="text" id="funcionBiseccion" placeholder="Ej: sin(x) + 3*cos(x)" required>
-              <label for="a">Extremo inferior a:</label>
-              <input type="number" id="a" step="any" required>
-              <label for="b">Extremo superior b:</label>
-              <input type="number" id="b" step="any" required>
-              <button type="submit"><i class="fas fa-play-circle"></i> Calcular raíz (Bisección)</button>
-            </form>
-            <p id="resultadoBiseccion" class="result-display"></p>
-          </div>
+    <header>
+        <div class="header-content">
+            <h1><i class="fas fa-calculator"></i> Calculadora Numérica Avanzada</h1>
+            <nav>
+                <a href="#problema"><i class="fas fa-lightbulb"></i> Problema</a>
+                <a href="#metodos-info"><i class="fas fa-cogs"></i> Métodos</a>
+                <a href="#interfaz"><i class="fas fa-desktop"></i> Interfaz</a>
+                <a href="#calculo-section"><i class="fas fa-square-root-alt"></i> Cálculo</a>
+                <a href="#repo"><i class="fas fa-code-branch"></i> Repositorio</a>
+                <a href="#" onclick="openModal(); return false;"><i class="fas fa-info-circle"></i> Acerca de</a>
+            </nav>
         </div>
-      </div>
+    </header>
+
+    <main>
+        <div class="card" id="problema">
+            <h2><i class="fas fa-bullseye"></i> Definición del Problema</h2>
+            <p>La ingeniería y las ciencias a menudo se enfrentan a desafíos matemáticos complejos que no pueden resolverse mediante métodos analíticos directos. Estos incluyen la determinación de raíces de ecuaciones no lineales, la interpolación de datos experimentales, la solución de sistemas de ecuaciones y la optimización de procesos. La falta de herramientas accesibles y didácticas para explorar y aplicar estos métodos puede dificultar la comprensión y la resolución práctica de problemas.</p>
+            <p>Este proyecto aborda la necesidad de una plataforma interactiva que permita a estudiantes y profesionales **explorar, aplicar y visualizar métodos numéricos fundamentales**. Nos enfocamos en proporcionar una herramienta robusta y fácil de usar para encontrar soluciones aproximadas a problemas que son intratables analíticamente.</p>
+            <p class="justification"><strong>Justificación:</strong> La habilidad para aplicar y comprender métodos numéricos es indispensable en el currículo de ingeniería y ciencias. Esta aplicación sirve como un puente entre la teoría y la práctica, ofreciendo un entorno de aprendizaje activo. Al permitir la manipulación de funciones y parámetros, y la visualización de resultados, se mejora la intuición sobre la convergencia, la estabilidad y la precisión de los algoritmos. Esto no solo facilita el aprendizaje, sino que también equipa a los usuarios con una herramienta valiosa para el análisis y diseño en sus respectivas disciplinas.</p>
+        </div>
+
+        <div class="card" id="metodos-info">
+            <h2><i class="fas fa-list-ol"></i> Métodos Numéricos Soportados</h2>
+            <p>Esta aplicación implementa y demuestra una selección de métodos numéricos clave para la resolución de ecuaciones no lineales y la interpolación. Cada método ofrece una aproximación diferente para abordar problemas específicos:</p>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> <strong>Interpolación de Lagrange:</strong> Permite construir un polinomio que pasa exactamente por un conjunto dado de puntos de datos. Es invaluable para estimar valores intermedios o para aproximar funciones complejas a partir de un número discreto de observaciones.</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Método de Punto Fijo:</strong> Un método iterativo para encontrar raíces de ecuaciones. Se basa en transformar la ecuación original f(x)=0 en una forma equivalente x=g(x) y luego aplicar un proceso de iteración simple. Su convergencia depende de la elección de g(x).</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Método de Newton-Raphson:</strong> Un método potente y de rápida convergencia para encontrar raíces de funciones. Requiere el conocimiento de la función y su primera derivada. Es ampliamente utilizado en optimización y resolución de sistemas no lineales.</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Método de la Secante:</strong> Una alternativa al método de Newton-Raphson que no requiere el cálculo explícito de la derivada. Aproxima la derivada utilizando una línea secante que pasa por dos puntos previos de la función.</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Método de Bisección:</strong> Un método robusto y garantizado para encontrar una raíz dentro de un intervalo cerrado, siempre que la función sea continua y cambie de signo en dicho intervalo. Aunque su convergencia es más lenta, su fiabilidad lo hace fundamental.</li>
+                <li><i class="fas fa-hourglass-half"></i> <strong>Otros métodos:</strong> (Próximas implementaciones) Nuestra visión a futuro incluye la adición de métodos para integración y derivación numérica, resolución de ecuaciones diferenciales ordinarias (EDO) y problemas de optimización numérica, ampliando aún más la utilidad de la calculadora.</li>
+            </ul>
+            <p class="impact-statement">Estos métodos son herramientas fundamentales en áreas como la simulación, el diseño de ingeniería, la economía, la física y la ciencia de datos, empoderando a los usuarios para resolver desafíos complejos y tomar decisiones informadas.</p>
+        </div>
+
+        <div class="card" id="interfaz">
+            <h2><i class="fas fa-desktop"></i> Diseño y Usabilidad de la Interfaz</h2>
+            <p>La interfaz de usuario ha sido cuidadosamente diseñada para ser **intuitiva, limpia y altamente funcional**, priorizando la experiencia del usuario. Nuestro objetivo es que la interacción con los métodos numéricos sea lo más sencilla y clara posible, incluso para usuarios sin experiencia previa en programación.</p>
+            <ul>
+                <li><strong>Navegación Clara:</strong> Un menú superior persistente permite un acceso rápido a las diferentes secciones de la aplicación.</li>
+                <li><strong>Selección de Métodos Intuitiva:</strong> La sección de "Cálculo" presenta un panel lateral de selección de métodos, permitiendo al usuario elegir fácilmente el algoritmo deseado. El método activo se resalta visualmente.</li>
+                <li><strong>Formularios Específicos:</strong> Cada método numérico tiene su propio formulario de entrada de datos, diseñado para solicitar solo los parámetros relevantes. Los campos son claros y las instrucciones de ejemplo guían al usuario.</li>
+                <li><strong>Retroalimentación Visual:</strong> Los resultados de los cálculos se muestran en un área dedicada con un formato claro. Se incluyen indicadores de carga y mensajes de error específicos para guiar al usuario en caso de problemas o no convergencia.</li>
+                <li><strong>Diseño Responsivo:</strong> La aplicación se adapta automáticamente a diferentes tamaños de pantalla (escritorio, tablet, móvil), garantizando una experiencia óptima en cualquier dispositivo.</li>
+                <li><strong>Estética Profesional:</strong> Se utiliza una paleta de colores moderna y tipografía legible para crear un entorno de trabajo agradable y profesional, inspirándose en herramientas científicas y calculadoras avanzadas.</li>
+            </ul>
+            <p>Este enfoque en la usabilidad asegura que la aplicación no solo sea una herramienta de cálculo, sino también una plataforma didáctica efectiva.</p>
+        </div>
+
+        <div class="card full-width-card" id="calculo-section">
+            <h2><i class="fas fa-calculator"></i> Realizar Cálculos Numéricos</h2>
+            <p class="intro-text">Selecciona un método numérico del panel izquierdo para ingresar los parámetros necesarios y obtener los resultados. Asegúrate de usar la sintaxis correcta para las funciones (ej: `sin(x)`, `x^2`, `exp(x)`).</p>
+
+            <div class="calculator-layout">
+                <div class="method-selection-panel" id="method-selection">
+                    <h3><i class="fas fa-hand-pointer"></i> Selecciona un Método</h3>
+                    <button class="method-button" data-method="lagrange-content" onclick="showMethodContent('lagrange-content')">Interpolación de Lagrange</button>
+                    <button class="method-button" data-method="punto-fijo-content" onclick="showMethodContent('punto-fijo-content')">Método de Punto Fijo</button>
+                    <button class="method-button" data-method="newton-raphson-content" onclick="showMethodContent('newton-raphson-content')">Método de Newton-Raphson</button>
+                    <button class="method-button" data-method="secante-content" onclick="showMethodContent('secante-content')">Método de la Secante</button>
+                    <button class="method-button" data-method="biseccion-content" onclick="showMethodContent('biseccion-content')">Método de Bisección</button>
+                </div>
+
+                <div class="calculation-area">
+                    <h3><i class="fas fa-keyboard"></i> Ingresa los Parámetros</h3>
+
+                    <div id="lagrange-content" class="method-content">
+                        <h4>Polinomio de Interpolación de Lagrange</h4>
+                        <form onsubmit="event.preventDefault(); metodoPolilagrange();">
+                            <label for="xValLagrange">Valor de x a interpolar:</label>
+                            <input type="number" id="xValLagrange" step="any" required placeholder="Ej: 3.5">
+
+                            <label for="X_pointsLagrange">Puntos X (separados por comas o espacios):</label>
+                            <textarea id="X_pointsLagrange" class="array-input" rows="2" placeholder="Ej: 1, 2, 4, 5" required></textarea>
+
+                            <label for="Y_pointsLagrange">Puntos Y (separados por comas o espacios):</label>
+                            <textarea id="Y_pointsLagrange" class="array-input" rows="2" placeholder="Ej: 10, 15, 20, 25" required></textarea>
+
+                            <button type="submit"><i class="fas fa-play-circle"></i> Calcular con Lagrange</button>
+                        </form>
+                        <div id="resultadoPolilagrange" class="result-display"></div>
+                    </div>
+
+                    <div id="punto-fijo-content" class="method-content">
+                        <h4>Método de Punto Fijo</h4>
+                        <p class="method-description">Para resolver f(x) = 0, se requiere una función g(x) tal que x = g(x) (es decir, f(x) = x - g(x)).</p>
+                        <form onsubmit="event.preventDefault(); metodoPuntoFijo();">
+                            <label for="funcionG">Función de iteración g(x):</label>
+                            <input type="text" id="funcionG" placeholder="Ej: cos(x) + 0.5" required>
+                            <label for="x0PuntoFijo">Valor inicial x₀:</label>
+                            <input type="number" id="x0PuntoFijo" step="any" required>
+                            <label for="tolPuntoFijo">Tolerancia (TOL):</label>
+                            <input type="number" id="tolPuntoFijo" step="any" value="0.0001" required>
+                            <label for="maxIterPuntoFijo">Máximo de Iteraciones:</label>
+                            <input type="number" id="maxIterPuntoFijo" step="1" value="1000" required>
+                            <button type="submit"><i class="fas fa-play-circle"></i> Calcular punto fijo</button>
+                        </form>
+                        <div id="resultadoPuntoFijo" class="result-display"></div>
+                    </div>
+
+                    <div id="newton-raphson-content" class="method-content">
+                        <h4>Método de Newton-Raphson</h4>
+                        <form onsubmit="event.preventDefault(); metodoNewtonRaphson();">
+                            <label for="funcionFNewton">Función f(x):</label>
+                            <input type="text" id="funcionFNewton" placeholder="Ej: x^3 - 2*x + 8" required>
+                            <label for="x0Newton">Valor inicial x₀:</label>
+                            <input type="number" id="x0Newton" step="any" required>
+                            <label for="tolNewton">Tolerancia (TOL):</label>
+                            <input type="number" id="tolNewton" step="any" value="0.0001" required>
+                            <label for="maxIterNewton">Máximo de Iteraciones:</label>
+                            <input type="number" id="maxIterNewton" step="1" value="1000" required>
+                            <button type="submit"><i class="fas fa-play-circle"></i> Calcular raíz (Newton)</button>
+                        </form>
+                        <div id="resultadoNewtonRaphson" class="result-display"></div>
+                    </div>
+
+                    <div id="secante-content" class="method-content">
+                        <h4>Método de la Secante</h4>
+                        <form onsubmit="event.preventDefault(); metodoSecante();">
+                            <label for="funcionSecante">Función f(x):</label>
+                            <input type="text" id="funcionSecante" placeholder="Ej: sin(x) + 3*cos(x)" required>
+                            <label for="x0">Valor inicial x₀:</label>
+                            <input type="number" id="x0" step="any" required>
+                            <label for="x1">Valor inicial x₁:</label>
+                            <input type="number" id="x1" step="any" required>
+                            <label for="tolSecante">Tolerancia (TOL):</label>
+                            <input type="number" id="tolSecante" step="any" value="0.0001" required>
+                            <label for="maxIterSecante">Máximo de Iteraciones:</label>
+                            <input type="number" id="maxIterSecante" step="1" value="1000" required>
+                            <button type="submit"><i class="fas fa-play-circle"></i> Calcular raíz (Secante)</button>
+                        </form>
+                        <div id="resultadoSecante" class="result-display"></div>
+                    </div>
+
+                    <div id="biseccion-content" class="method-content">
+                        <h4>Método de Bisección</h4>
+                        <form onsubmit="event.preventDefault(); metodoBiseccion();">
+                            <label for="funcionBiseccion">Función f(x):</label>
+                            <input type="text" id="funcionBiseccion" placeholder="Ej: sin(x) + 3*cos(x)" required>
+                            <label for="a">Extremo inferior a:</label>
+                            <input type="number" id="a" step="any" required>
+                            <label for="b">Extremo superior b:</label>
+                            <input type="number" id="b" step="any" required>
+                            <label for="tolBiseccion">Tolerancia (TOL):</label>
+                            <input type="number" id="tolBiseccion" step="any" value="0.0001" required>
+                            <label for="maxIterBiseccion">Máximo de Iteraciones:</label>
+                            <input type="number" id="maxIterBiseccion" step="1" value="1000" required>
+                            <button type="submit"><i class="fas fa-play-circle"></i> Calcular raíz (Bisección)</button>
+                        </form>
+                        <div id="resultadoBiseccion" class="result-display"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" id="repo">
+            <h2><i class="fas fa-folder-open"></i> Repositorio y Scrum</h2>
+            <p>Esta sección es el punto de acceso a la **documentación completa y al historial de desarrollo** de nuestro proyecto, siguiendo una metodología ágil. Aquí se consolidan todos los entregables requeridos para la evaluación final.</p>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> <strong>Ingeniería de Requisitos:</strong> Documento detallado que incluye la definición del problema, justificación, casos de uso, y los requisitos funcionales y no funcionales que guían el desarrollo de la aplicación.</li>
+                <li><i class="fas fa-book"></i> <strong>Guía Técnica:</strong> Proporciona una descripción exhaustiva de la arquitectura del sistema, las tecnologías y librerías utilizadas, la estructura modular del código, y las instrucciones para el despliegue y configuración de la aplicación.</li>
+                <li><i class="fas fa-users-cog"></i> <strong>Manual de Usuario:</strong> Una guía práctica y visual que explica paso a paso cómo interactuar con la aplicación, utilizar cada método numérico, interpretar los resultados y solucionar problemas comunes.</li>
+                <li><i class="fas fa-tasks"></i> <strong>Bitácora del Desarrollo Ágil:</strong> Un registro cronológico del progreso del proyecto, incluyendo el backlog inicial y su evolución, la planificación y ejecución de los sprints, las tareas completadas, los desafíos enfrentados y las lecciones aprendidas.</li>
+                <li><i class="fas fa-code-branch"></i> <strong>Repositorio de Código:</strong> Acceso directo al código fuente completo del proyecto, gestionado con control de versiones (Git), donde se puede revisar el historial de commits y las contribuciones del equipo.</li>
+                <li><i class="fas fa-vial"></i> <strong>Evidencia de Pruebas:</strong> Incluye los reportes de las pruebas unitarias realizadas a cada método numérico, las pruebas de integración entre los componentes de la aplicación y las validaciones de aceptación que aseguran la funcionalidad y precisión del sistema.</li>
+            </ul>
+            <p class="repo-links">
+                <a href="https://universidaddelacosta-my.sharepoint.com/:w:/g/personal/jvecino_cuc_edu_co/ESJNCRTx5VhOo8gEgO2FEcMBa1FiRix3GcRqVgqgy5m--A?e=cOPUco" target="_blank"><i class="fas fa-file-word"></i> DOCUMENTO DE ADELANTO DEL PROYECTO (SharePoint)</a>
+                <a href="https://github.com/tu-usuario/tu-repositorio" target="_blank"><i class="fab fa-github"></i> REPOSITORIO DE CÓDIGO (GitHub)</a>
+            </p>
+            <p class="note"><small><strong>¡Importante!</strong> Asegúrate de reemplazar `https://github.com/tu-usuario/tu-repositorio` con la URL real de tu repositorio de GitHub y de que todos los documentos mencionados estén accesibles a través de los enlaces apropiados.</small></p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Proyecto Final - Métodos Numéricos | Ingeniería de Sistemas - Universidad de la Costa</p>
+        <p>Desarrollado por: <strong>[Nombres de los Integrantes del Equipo]</strong></p>
+        <p class="note"><small><strong>¡No olvides!</strong> Rellena los nombres de los integrantes del equipo en el pie de página.</small></p>
+    </footer>
+
+    <div id="aboutModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2><i class="fas fa-info-circle"></i> Acerca de la Aplicación</h2>
+            <p>Esta aplicación es el resultado del proyecto final de la asignatura de <strong>Métodos Numéricos</strong> de la carrera de Ingeniería de Sistemas en la Universidad de la Costa (CUC).</p>
+            <p>Su propósito principal es proporcionar una herramienta interactiva y didáctica para la comprensión y aplicación de los principales algoritmos numéricos utilizados en la resolución de problemas de ingeniería y ciencias. Busca cerrar la brecha entre la teoría y la práctica, permitiendo a estudiantes y profesionales experimentar directamente con los métodos y visualizar sus resultados de manera eficiente.</p>
+            <p><strong>Equipo de Desarrollo:</strong></p>
+            <ul>
+                <li><i class="fas fa-user-circle"></i> [Nombre del Integrante 1]</li>
+                <li><i class="fas fa-user-circle"></i> [Nombre del Integrante 2]</li>
+                <li><i class="fas fa-user-circle"></i> [Nombre del Integrante 3]</li>
+            </ul>
+            <p><strong>Tecnologías Utilizadas:</strong></p>
+            <ul>
+                <li><i class="fab fa-html5"></i> <strong>HTML5:</strong> Para la estructura semántica de la página.</li>
+                <li><i class="fab fa-css3-alt"></i> <strong>CSS3:</strong> Para el diseño visual, la responsividad y la estética moderna.</li>
+                <li><i class="fab fa-js"></i> <strong>JavaScript:</strong> Para la lógica de los métodos numéricos y la interactividad de la interfaz.</li>
+                <li><i class="fas fa-calculator"></i> <strong>Math.js:</strong> Una librería robusta para el parseo y evaluación de expresiones matemáticas y cálculo de derivadas simbólicas.</li>
+                <li><i class="fas fa-icons"></i> <strong>Font Awesome:</strong> Para la iconografía que mejora la usabilidad y la estética.</li>
+            </ul>
+            <p class="impact-statement">Esperamos que esta herramienta sea de gran utilidad para la comunidad académica y sirva como un recurso valioso en el estudio y aplicación de los métodos numéricos.</p>
+        </div>
     </div>
 
-    <div class="card" id="repo">
-      <h2><i class="fas fa-folder-open"></i> Repositorio y Scrum</h2>
-      <p>Esta sección es el punto de acceso a la <strong>documentación completa y al historial de desarrollo</strong> de nuestro proyecto, siguiendo una metodología ágil. Aquí se consolidan todos los entregables requeridos para la evaluación final.</p>
-      <ul>
-        <li><i class="fas fa-check-circle"></i> <strong>Ingeniería de Requisitos:</strong> Documento detallado que incluye la definición del problema, justificación, casos de uso, y los requisitos funcionales y no funcionales que guían el desarrollo de la aplicación.</li>
-        <li><i class="fas fa-book"></i> <strong>Guía Técnica:</strong> Proporciona una descripción exhaustiva de la arquitectura del sistema, las tecnologías y librerías utilizadas, la estructura modular del código, y las instrucciones para el despliegue y configuración de la aplicación.</li>
-        <li><i class="fas fa-users-cog"></i> <strong>Manual de Usuario:</strong> Una guía práctica y visual que explica paso a paso cómo interactuar con la aplicación, utilizar cada método numérico, interpretar los resultados y solucionar problemas comunes.</li>
-        <li><i class="fas fa-tasks"></i> <strong>Bitácora del Desarrollo Ágil:</strong> Un registro cronológico del progreso del proyecto, incluyendo el backlog inicial y su evolución, la planificación y ejecución de los sprints, las tareas completadas, los desafíos enfrentados y las lecciones aprendidas.</li>
-        <li><i class="fas fa-code-branch"></i> <strong>Repositorio de Código:</strong> Acceso directo al código fuente completo del proyecto, gestionado con control de versiones (Git), donde se puede revisar el historial de commits y las contribuciones del equipo.</li>
-        <li><i class="fas fa-vial"></i> <strong>Evidencia de Pruebas:</strong> Incluye los reportes de las pruebas unitarias realizadas a cada método numérico, las pruebas de integración entre los componentes de la aplicación y las validaciones de aceptación que aseguran la funcionalidad y precisión del sistema.</li>
-      </ul>
-      <p class="repo-links">
-        <a href="https://universidaddelacosta-my.sharepoint.com/:w:/g/personal/jvecino_cuc_edu_co/ESJNCRTx5VhOo8gEgO2FEcMBa1FiRix3GcRqVgqgy5m--A?e=cOPUco" target="_blank"><i class="fas fa-file-word"></i> DOCUMENTO DE ADELANTO DEL PROYECTO (SharePoint)</a>
-        <a href="https://github.com/tu-usuario/tu-repositorio" target="_blank"><i class="fab fa-github"></i> REPOSITORIO DE CÓDIGO (GitHub)</a>
-      </p>
-      <p class="note"><small><strong>¡Importante!</strong> Asegúrate de reemplazar `https://github.com/tu-usuario/tu-repositorio` con la URL real de tu repositorio de GitHub y de que todos los documentos mencionados estén accesibles a través de los enlaces apropiados.</small></p>
-    </div>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Proyecto Final - Métodos Numéricos | Ingeniería de Sistemas - Universidad de la Costa</p>
-    <p>Desarrollado por: <strong>[Nombres de los Integrantes del Equipo]</strong></p>
-    <p class="note"><small><strong>¡No olvides!</strong> Rellena los nombres de los integrantes del equipo en el pie de página.</small></p>
-  </footer>
-
-  <div id="aboutModal" class="modal">
-    <div class="modal-content">
-      <span class="close-button" onclick="closeModal()">&times;</span>
-      <h2><i class="fas fa-info-circle"></i> Acerca de la Aplicación</h2>
-      <p>Esta aplicación es el resultado del proyecto final de la asignatura de <strong>Métodos Numéricos</strong> de la carrera de Ingeniería de Sistemas en la Universidad de la Costa (CUC).</p>
-      <p>Su propósito principal es proporcionar una herramienta interactiva y didáctica para la comprensión y aplicación de los principales algoritmos numéricos utilizados en la resolución de problemas de ingeniería y ciencias. Busca cerrar la brecha entre la teoría y la práctica, permitiendo a estudiantes y profesionales experimentar directamente con los métodos y visualizar sus resultados de manera eficiente.</p>
-      <p><strong>Equipo de Desarrollo:</strong></p>
-      <ul>
-        <li><i class="fas fa-user-circle"></i> [Nombre del Integrante 1]</li>
-        <li><i class="fas fa-user-circle"></i> [Nombre del Integrante 2]</li>
-        <li><i class="fas fa-user-circle"></i> [Nombre del Integrante 3]</li>
-        </ul>
-      <p><strong>Tecnologías Utilizadas:</strong></p>
-      <ul>
-        <li><i class="fab fa-html5"></i> <strong>HTML5:</strong> Para la estructura semántica de la página.</li>
-        <li><i class="fab fa-css3-alt"></i> <strong>CSS3:</strong> Para el diseño visual, la responsividad y la estética moderna.</li>
-        <li><i class="fab fa-js"></i> <strong>JavaScript:</strong> Para la lógica de los métodos numéricos y la interactividad de la interfaz.</li>
-        <li><i class="fas fa-calculator"></i> <strong>Math.js:</strong> Una librería robusta para el parseo y evaluación de expresiones matemáticas y cálculo de derivadas simbólicas.</li>
-        <li><i class="fas fa-icons"></i> <strong>Font Awesome:</strong> Para la iconografía que mejora la usabilidad y la estética.</li>
-      </ul>
-      <p class="impact-statement">Esperamos que esta herramienta sea de gran utilidad para la comunidad académica y sirva como un recurso valioso en el estudio y aplicación de los métodos numéricos.</p>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
